@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Data 1
+    let dolphinsScores1 = [96, 108, 89];
+    let koalasScores1 = [88, 91, 110];
+
+    // Data Bonus 1
+    let dolphinsScores2 = [97, 112, 101];
+    let koalasScores2 = [109, 95, 123];
+
+    // Data Bonus 2
+    let dolphinsScores3 = [97, 112, 101];
+    let koalasScores3 = [109, 95, 106];
+
+    function calculateAverage(scores) {
+        let sum = scores.reduce((a, b) => a + b, 0);
+        return sum / scores.length;
+    }
+
+    function determineWinner(dolphinsAverage, koalasAverage) {
+        if (dolphinsAverage > koalasAverage && dolphinsAverage >= 100) {
+            console.log(`Dolphins win with an average score of ${dolphinsAverage}`);
+        } else if (koalasAverage > dolphinsAverage && koalasAverage >= 100) {
+            console.log(`Koalas win with an average score of ${koalasAverage}`);
+        } else if (dolphinsAverage === koalasAverage && dolphinsAverage >= 100) {
+            console.log(`It's a draw with both teams scoring an average of ${dolphinsAverage}`);
+        } else {
+            console.log("No team wins the trophy");
+        }
+    }
+
+    // Data 1
+    let dolphinsAverage1 = calculateAverage(dolphinsScores1);
+    let koalasAverage1 = calculateAverage(koalasScores1);
+    determineWinner(dolphinsAverage1, koalasAverage1);
+
+    // Data Bonus 1
+    let dolphinsAverage2 = calculateAverage(dolphinsScores2);
+    let koalasAverage2 = calculateAverage(koalasScores2);
+    determineWinner(dolphinsAverage2, koalasAverage2);
+
+    // Data Bonus 2
+    let dolphinsAverage3 = calculateAverage(dolphinsScores3);
+    let koalasAverage3 = calculateAverage(koalasScores3);
+    determineWinner(dolphinsAverage3, koalasAverage3);
+</script>
+
+</html>
