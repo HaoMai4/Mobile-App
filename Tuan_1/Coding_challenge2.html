@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Data 1
+    let markMass1 = 78;
+    let markHeight1 = 1.69;
+    let johnMass1 = 92;
+    let johnHeight1 = 1.95;
+
+    // Data 2
+    let markMass2 = 95;
+    let markHeight2 = 1.88;
+    let johnMass2 = 85;
+    let johnHeight2 = 1.76;
+
+    // Calculate BMIs
+    let markBmi1 = markMass1 / (markHeight1 * markHeight1);
+    let johnBmi1 = johnMass1 / (johnHeight1 * johnHeight1);
+
+    let markBmi2 = markMass2 / (markHeight2 * markHeight2);
+    let johnBmi2 = johnMass2 / (johnHeight2 * johnHeight2);
+
+    // Check if Mark has a higher BMI than John and print a message
+    if (markBmi1 > johnBmi1) {
+        console.log(`Data 1: Mark's BMI (${markBmi1}) is higher than John's (${johnBmi1})!`);
+    } else {
+        console.log(`Data 1: John's BMI (${johnBmi1}) is higher than Mark's (${markBmi1})!`);
+    }
+
+    if (markBmi2 > johnBmi2) {
+        console.log(`Data 2: Mark's BMI (${markBmi2}) is higher than John's (${johnBmi2})!`);
+    } else {
+        console.log(`Data 2: John's BMI (${johnBmi2}) is higher than Mark's (${markBmi2})!`);
+    }
+</script>
+
+</html>
