@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function calculateTipAndTotal(bill) {
+        let tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+        let total = bill + tip;
+        console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${total}`);
+    }
+
+    // Test the function with given test data
+    calculateTipAndTotal(275);
+    calculateTipAndTotal(40);
+    calculateTipAndTotal(430);
+</script>
+
+</html>
