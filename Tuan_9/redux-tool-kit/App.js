@@ -1,35 +1,45 @@
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
+import { Text,View, SafeAreaView,Button, StyleSheet } from 'react-native';
+import {createStore} from 'redux';
+import {Provider, useSelector, useDispatch} from 'react-redux'
 
-// You can import supported modules from npm
-import { Card } from 'react-native-paper';
+var reducer = (state, action)=>{
+  switch(action.type){
+    case 'INC': return {...state, count: state.count + 1}
+    case 'DEC': return {...state, count: state.count - 1}
+    default: return {...state};
+  }
+}
 
-// or any files within the Snack
-import AssetExample from './components/AssetExample';
+var store = createStore(reducer, {count: 0});
+
+var Counter = ()=>{
+
+  var state = useSelector(state=>state);
+  var dispatch = useDispatch();
+
+  return (
+    <View>
+      <Text>{state.count}</Text>
+      <br/>
+      <Button title = 'INC' onPress={()=>{
+        dispatch({type: 'INC'});
+      }}></Button>
+      <br/>
+      <Button title = 'DEC' onPress={()=>{
+        dispatch({type: 'DEC'});
+      }}></Button>
+    </View>
+  )
+}
 
 export default function App() {
+
+
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        <AssetExample />
-      </Card>
-    </SafeAreaView>
+    <Provider store={store}>
+    <Counter/>
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
