@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default function BikeShopScreen({navigation}) {
+export default function BikeShopScreen({ navigation }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [bikes, setBikes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,9 @@ export default function BikeShopScreen({navigation}) {
   useEffect(() => {
     const fetchBikes = async () => {
       try {
-        const response = await fetch('https://6731a4bb7aaf2a9aff11580c.mockapi.io/Bike'); // Thay đổi URL này với API của bạn
+        const response = await fetch(
+          'https://6731a4bb7aaf2a9aff11580c.mockapi.io/Bike'
+        ); // Thay đổi URL này với API của bạn
         const data = await response.json();
         setBikes(data);
       } catch (error) {
@@ -69,13 +71,21 @@ export default function BikeShopScreen({navigation}) {
     const isLiked = likedBikes.includes(item.id); // Kiểm tra nếu chiếc xe đạp này đã được yêu thích
     return (
       <View style={styles.bikeCard}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Detail')}
-      >
-        <Image source={{ uri: item.Image }} style={styles.bikeImage} />
-        <Text style={styles.bikeName}>{item.name}</Text>
-        <Text style={styles.bikePrice}>${item.Price}</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.heartIcon}
+          onPress={() => toggleLike(item.id)}>
+          <FontAwesome
+            name="heart"
+            size={20}
+            color={isLiked ? '#D32F2F' : '#B0B0B0'} // Thay đổi màu khi được yêu thích
+          />
+        </TouchableOpacity>
+          <Image source={{ uri: item.Image }} style={styles.bikeImage} />
+          
+        <TouchableOpacity onPress={() => navigation.navigate('Detail')}>
+          <Text style={styles.bikeName}>{item.name}</Text>
+          <Text style={styles.bikePrice}>${item.Price}</Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -172,6 +182,7 @@ const styles = StyleSheet.create({
   heartIcon: {
     position: 'absolute',
     top: 8,
+    left: 8,
   },
   loadingContainer: {
     flex: 1,
